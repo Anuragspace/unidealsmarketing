@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState, useEffect, useCallback } from "react";
+import React, { useRef, useState, useEffect, useCallback, useSyncExternalStore } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   UserRoundIcon,
@@ -258,6 +258,8 @@ export default function UnidealsHero() {
     loopTimersRef.current = [];
   }, []);
 
+  const startCycleRef = useRef<() => void>(() => {});
+
   const startCycle = useCallback(() => {
     if (reducedMotion || isPausedRef.current) return;
 
@@ -280,7 +282,7 @@ export default function UnidealsHero() {
 
     const endTimer = setTimeout(() => {
       const nextCycleTimer = setTimeout(() => {
-        startCycle();
+        startCycleRef.current();
       }, CYCLE_PAUSE);
       loopTimersRef.current.push(nextCycleTimer);
     }, maxEndTime + 100);
@@ -289,17 +291,22 @@ export default function UnidealsHero() {
   }, [clearCycleTimers, triggerSlot, reducedMotion]);
 
   useEffect(() => {
+    startCycleRef.current = startCycle;
+  }, [startCycle]);
+
+  useEffect(() => {
     if (reducedMotion) return;
     const initTimer = setTimeout(() => {
-      startCycle();
+      startCycleRef.current();
     }, INITIAL_PAUSE);
     loopTimersRef.current.push(initTimer);
 
+    const slotTimers = slotTimersRef.current;
     return () => {
       clearCycleTimers();
-      Object.values(slotTimersRef.current).forEach(clearTimeout);
+      Object.values(slotTimers).forEach(clearTimeout);
     };
-  }, [startCycle, clearCycleTimers, reducedMotion]);
+  }, [clearCycleTimers, reducedMotion]);
 
   const handleWordHover = useCallback((slotId: number) => {
     triggerSlot(slotId, HOLD_DURATION);
@@ -645,13 +652,17 @@ export default function UnidealsHero() {
 
 // ── Prefers-reduced-motion hook ───────────────────────────────────────────────
 function usePrefersReducedMotion(): boolean {
-  const [reduced, setReduced] = useState(false);
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setReduced(mq.matches);
-    const handler = (e: MediaQueryListEvent) => setReduced(e.matches);
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
-  }, []);
-  return reduced;
+  return useSyncExternalStore(
+    (callback) => {
+      if (typeof window === "undefined") return () => {};
+      const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+      mq.addEventListener("change", callback);
+      return () => mq.removeEventListener("change", callback);
+    },
+    () => {
+      if (typeof window === "undefined") return false;
+      return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    },
+    () => false
+  );
 }

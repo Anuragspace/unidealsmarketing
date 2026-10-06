@@ -261,7 +261,7 @@ export function AnimatedCountdown({
   const [timeLeft, setTimeLeft] = React.useState<TimeLeft>(
     getTimeLeft(defaultTarget)
   );
-  const [mounted, setMounted] = React.useState(false);
+  const mountedRef = React.useRef(false);
   const visibleUnits = useVisibleUnits({
     showDays,
     showHours,
@@ -271,13 +271,12 @@ export function AnimatedCountdown({
   });
 
   const displayTimeLeft = isStatic ? staticTime : timeLeft;
-  const completed = mounted && !isStatic && isFinished(displayTimeLeft);
+  const completed = !isStatic && isFinished(displayTimeLeft);
 
   React.useEffect(() => {
-    setMounted(true);
+    mountedRef.current = true;
     if (isStatic) return;
 
-    setTimeLeft(getTimeLeft(defaultTarget));
     const interval = window.setInterval(() => {
       setTimeLeft(getTimeLeft(defaultTarget));
     }, 1000);
@@ -286,10 +285,12 @@ export function AnimatedCountdown({
   }, [isStatic, defaultTarget]);
 
   React.useEffect(() => {
-    if (!completed || completedRef.current) return;
-    completedRef.current = true;
-    onComplete?.();
-  }, [completed, onComplete]);
+    if (!mountedRef.current) return;
+    if (!isStatic && isFinished(displayTimeLeft) && !completedRef.current) {
+      completedRef.current = true;
+      onComplete?.();
+    }
+  }, [isStatic, displayTimeLeft, onComplete]);
 
   return (
     <motion.div
