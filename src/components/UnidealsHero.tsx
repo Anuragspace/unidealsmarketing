@@ -13,7 +13,7 @@ import {
   WatchIcon,
 } from "@animateicons/react/lucide";
 import type { IconHandle } from "@animateicons/react";
-import RadialGradient from "./RadialGradient";
+import { InteractiveDotPattern } from "./DotPattern";
 import AnimatedCountdown from "./AnimatedCountdown";
 import SubscribeBox from "./SubscribeBox";
 
@@ -346,15 +346,8 @@ export default function UnidealsHero() {
         transition: "background 0.4s ease",
       }}
     >
-      {/* Radial Gradient Background (as requested) */}
-      <RadialGradient
-        isDark={isDark}
-        gradientFrom="#fff"
-        gradientTo="#63e"
-        gradientSize="125% 125%"
-        gradientPosition="50% 10%"
-        gradientStop="40%"
-      />
+      {/* Interactive Well-Spaced Dot Pattern with Mouse Cursor Interaction */}
+      <InteractiveDotPattern isDark={isDark} dotSpacing={32} dotRadius={1.2} />
 
       {/* TOP NAVIGATION: Transparent Header, Logo (Left), and Theme Switch (Right) */}
       <header
