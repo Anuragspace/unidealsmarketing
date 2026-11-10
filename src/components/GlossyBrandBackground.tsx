@@ -172,21 +172,9 @@ export default function GlossyBrandBackground({
         }}
       />
 
-      {/* 3. MIDDLE-LEFT 3D GLOSSY LOGO (Positioned so it NEVER overlaps with text or nav bar) */}
+      {/* 3. MIDDLE-LEFT 3D GLOSSY LOGO */}
       <div className="unideals-bg-logo-left">
-        {/* Soft bloom aura behind the 3D logo */}
-        <div
-          style={{
-            position: "absolute",
-            inset: "-20%",
-            borderRadius: "50%",
-            background: isDark
-              ? "radial-gradient(circle, rgba(255, 255, 255, 0.04) 0%, transparent 70%)"
-              : "radial-gradient(circle, rgba(56, 56, 236, 0.22) 0%, transparent 70%)",
-            filter: "blur(40px)",
-          }}
-        />
-        {/* The 3D Glossy Tag Logo, rotated to show the glossy curved bottom entering from the middle-left */}
+        {/* The 3D Glossy Tag Logo with crisp natural physical shadow (no artificial AI bloom) */}
         <Image
           src="/logo-glossy-3d.png"
           alt=""
@@ -199,28 +187,16 @@ export default function GlossyBrandBackground({
             objectFit: "contain",
             transform: "rotate(-18deg)",
             filter: isDark
-              ? "drop-shadow(0 20px 45px rgba(0, 0, 0, 0.8))"
-              : "drop-shadow(0 24px 50px rgba(56, 56, 236, 0.22))",
-            opacity: isDark ? 0.92 : 0.92,
+              ? "drop-shadow(0 18px 36px rgba(0, 0, 0, 0.55))"
+              : "drop-shadow(0 14px 28px rgba(0, 0, 0, 0.06))",
+            opacity: 0.95,
           }}
         />
       </div>
 
       {/* 4. BOTTOM-RIGHT 3D GLOSSY LOGO TAG */}
       <div className="unideals-bg-logo-right">
-        {/* Diffuse bloom aura */}
-        <div
-          style={{
-            position: "absolute",
-            inset: "-20%",
-            borderRadius: "50%",
-            background: isDark
-              ? "radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 70%)"
-              : "radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, transparent 70%)",
-            filter: "blur(40px)",
-          }}
-        />
-        {/* The 3D Glossy Tag Logo */}
+        {/* The 3D Glossy Tag Logo with crisp natural physical shadow */}
         <Image
           src="/logo-glossy-3d.png"
           alt=""
@@ -233,9 +209,9 @@ export default function GlossyBrandBackground({
             objectFit: "contain",
             transform: "rotate(15deg)",
             filter: isDark
-              ? "drop-shadow(0 -16px 45px rgba(0, 0, 0, 0.75))"
-              : "drop-shadow(0 -16px 45px rgba(110, 110, 244, 0.24))",
-            opacity: isDark ? 0.88 : 0.88,
+              ? "drop-shadow(0 -14px 32px rgba(0, 0, 0, 0.5))"
+              : "drop-shadow(0 -12px 24px rgba(0, 0, 0, 0.05))",
+            opacity: 0.92,
           }}
         />
       </div>

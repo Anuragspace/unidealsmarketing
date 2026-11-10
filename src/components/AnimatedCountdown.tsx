@@ -306,15 +306,15 @@ export function AnimatedCountdown({
         borderRadius: "28px",
         background: isDark
           ? "rgba(24, 24, 27, 0.72)"
-          : "rgba(255, 255, 255, 0.8)",
+          : "rgba(255, 255, 255, 0.85)",
         border: isDark
           ? "1px solid rgba(255, 255, 255, 0.08)"
-          : "1px solid rgba(16, 7, 43, 0.08)",
+          : "1px solid #e2e8f0",
         backdropFilter: "blur(20px)",
         WebkitBackdropFilter: "blur(20px)",
         boxShadow: isDark
           ? "0 20px 48px -12px rgba(0, 0, 0, 0.7), 0 1px 0 rgba(255, 255, 255, 0.06)"
-          : "0 24px 48px -16px rgba(16, 7, 43, 0.09), 0 4px 12px rgba(56, 56, 236, 0.08)",
+          : "0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 20px 40px -12px rgba(0, 0, 0, 0.06)",
         transition: "all 0.3s ease",
       }}
     >

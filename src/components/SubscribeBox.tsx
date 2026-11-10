@@ -172,24 +172,14 @@ export default function SubscribeBox({ isDark }: { isDark: boolean }) {
           alignItems: "center",
           width: "100%",
           borderRadius: "9999px",
-          background: isDark
-            ? "rgba(24, 24, 27, 0.85)"
-            : "rgba(255, 255, 255, 0.88)",
-          border: status === "success"
-            ? "1px solid rgba(56, 56, 236, 0.6)"
-            : isDark
-            ? "1px solid rgba(255, 255, 255, 0.12)"
-            : "1px solid rgba(16, 7, 43, 0.12)",
-          backdropFilter: "blur(18px)",
-          WebkitBackdropFilter: "blur(18px)",
-          boxShadow: status === "success"
-            ? isDark
-              ? "0 8px 32px rgba(0, 0, 0, 0.6), 0 0 24px rgba(56, 56, 236, 0.3)"
-              : "0 8px 28px rgba(16, 7, 43, 0.08), 0 0 20px rgba(56, 56, 236, 0.25)"
-            : isDark
-            ? "0 8px 32px rgba(0, 0, 0, 0.55)"
-            : "0 8px 28px rgba(16, 7, 43, 0.08)",
-          transition: "border 0.3s ease, box-shadow 0.3s ease, background 0.3s ease",
+          background: isDark ? "#141416" : "#ffffff",
+          border: isDark
+            ? "1px solid rgba(255, 255, 255, 0.09)"
+            : "1px solid #e2e8f0",
+          boxShadow: isDark
+            ? "0 2px 8px rgba(0, 0, 0, 0.4), 0 12px 28px -4px rgba(0, 0, 0, 0.6)"
+            : "0 1px 3px rgba(0, 0, 0, 0.04), 0 10px 24px -4px rgba(0, 0, 0, 0.06)",
+          transition: "border 0.2s ease, box-shadow 0.2s ease, background 0.2s ease",
           overflow: "hidden",
         }}
       >
@@ -233,7 +223,7 @@ export default function SubscribeBox({ isDark }: { isDark: boolean }) {
                     alignItems: "center",
                     justifyContent: "center",
                     flexShrink: 0,
-                    boxShadow: "0 0 14px rgba(56, 56, 236, 0.45)",
+                    boxShadow: "0 2px 6px rgba(56, 56, 236, 0.25)",
                   }}
                 >
                   <motion.svg
@@ -266,14 +256,14 @@ export default function SubscribeBox({ isDark }: { isDark: boolean }) {
                     className="unideals-confirm-title"
                     style={{
                       fontFamily: "'Figtree', sans-serif",
-                      fontWeight: 700,
+                      fontWeight: 600,
                       fontSize: "0.92rem",
                       letterSpacing: "-0.015em",
-                      color: isDark ? "#ffffff" : "#10072B",
+                      color: isDark ? "#ffffff" : "#0f172a",
                       whiteSpace: "nowrap",
                       overflow: "hidden",
                       textOverflow: "ellipsis",
-                      lineHeight: 1.2,
+                      lineHeight: 1.25,
                     }}
                   >
                     You&apos;re on the list!
@@ -282,17 +272,17 @@ export default function SubscribeBox({ isDark }: { isDark: boolean }) {
                     className="unideals-confirm-sub"
                     style={{
                       fontFamily: "'Figtree', sans-serif",
-                      fontWeight: 500,
-                      fontSize: "0.74rem",
-                      color: isDark ? "rgba(255, 255, 255, 0.55)" : "#63607a",
+                      fontWeight: 400,
+                      fontSize: "0.75rem",
+                      color: isDark ? "rgba(255, 255, 255, 0.55)" : "#64748b",
                       whiteSpace: "nowrap",
                       overflow: "hidden",
                       textOverflow: "ellipsis",
-                      lineHeight: 1.2,
-                      marginTop: "2px",
+                      lineHeight: 1.25,
+                      marginTop: "1px",
                     }}
                   >
-                    Check your inbox for your confirmation ✉
+                    Check your inbox for your confirmation
                   </span>
                 </motion.div>
               </div>
@@ -306,26 +296,30 @@ export default function SubscribeBox({ isDark }: { isDark: boolean }) {
                 transition={{ delay: 0.22 }}
                 className="unideals-confirm-done-btn"
                 style={{
-                  border: isDark ? "1px solid rgba(255, 255, 255, 0.12)" : "1px solid rgba(16, 7, 43, 0.1)",
-                  background: isDark ? "rgba(255, 255, 255, 0.06)" : "rgba(16, 7, 43, 0.05)",
-                  color: isDark ? "rgba(255, 255, 255, 0.75)" : "#4b4866",
-                  padding: "7px 16px",
+                  border: isDark
+                    ? "1px solid rgba(255, 255, 255, 0.1)"
+                    : "1px solid #e2e8f0",
+                  background: isDark
+                    ? "rgba(255, 255, 255, 0.05)"
+                    : "#f8fafc",
+                  color: isDark ? "rgba(255, 255, 255, 0.75)" : "#475569",
+                  padding: "6px 14px",
                   borderRadius: "9999px",
-                  fontSize: "0.78rem",
-                  fontWeight: 600,
+                  fontSize: "0.76rem",
+                  fontWeight: 500,
                   cursor: "pointer",
                   fontFamily: "'Figtree', sans-serif",
-                  transition: "all 0.2s ease",
+                  transition: "all 0.15s ease",
                   flexShrink: 0,
                   whiteSpace: "nowrap",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = isDark ? "rgba(255, 255, 255, 0.14)" : "rgba(16, 7, 43, 0.1)";
-                  e.currentTarget.style.color = isDark ? "#ffffff" : "#10072b";
+                  e.currentTarget.style.background = isDark ? "rgba(255, 255, 255, 0.1)" : "#f1f5f9";
+                  e.currentTarget.style.color = isDark ? "#ffffff" : "#0f172a";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = isDark ? "rgba(255, 255, 255, 0.06)" : "rgba(16, 7, 43, 0.05)";
-                  e.currentTarget.style.color = isDark ? "rgba(255, 255, 255, 0.75)" : "#4b4866";
+                  e.currentTarget.style.background = isDark ? "rgba(255, 255, 255, 0.05)" : "#f8fafc";
+                  e.currentTarget.style.color = isDark ? "rgba(255, 255, 255, 0.75)" : "#475569";
                 }}
               >
                 Done
@@ -399,8 +393,8 @@ export default function SubscribeBox({ isDark }: { isDark: boolean }) {
                   fontWeight: 700,
                   fontFamily: "'Figtree', sans-serif",
                   borderRadius: "9999px",
-                  boxShadow: "0 0 18px rgba(56, 56, 236, 0.45)",
-                  transition: "transform 0.15s ease, background 0.2s ease",
+                  boxShadow: "0 1px 2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(56, 56, 236, 0.25)",
+                  transition: "transform 0.15s ease, background 0.15s ease",
                   whiteSpace: "nowrap",
                   flexShrink: 0,
                 }}
