@@ -137,16 +137,21 @@ export function getWelcomeEmailHtml({
                 Welcome to Unideals Early Access
               </h1>
 
-              <p style="margin: 0 0 14px 0; font-size: 15px; font-weight: 600; color: #3838EC; line-height: 1.5; letter-spacing: -0.01em;">
-                You have something to sell. Someone&rsquo;s looking for it.
+              <p style="margin: 0 0 16px 0; font-size: 15px; font-style: italic; font-weight: 500; color: #000000; line-height: 1.55; letter-spacing: -0.01em;">
+                &ldquo;You have something to sell. Someone&rsquo;s looking for it.&rdquo;
               </p>
 
               <p class="body-p" style="margin: 0 0 16px 0; font-size: 15px; font-weight: 400; color: #475569; line-height: 1.65;">
                 You&rsquo;re officially on the exclusive early access list. We are preparing to launch Unideals at your university so students can buy, sell, and trade textbooks, electronics, dorm essentials, and campus tickets directly with verified peers.
               </p>
 
-              <p class="body-p" style="margin: 0 0 28px 0; font-size: 15px; font-weight: 400; color: #475569; line-height: 1.65;">
+              <p class="body-p" style="margin: 0 0 24px 0; font-size: 15px; font-weight: 400; color: #475569; line-height: 1.65;">
                 We will notify you the moment your campus opens for student listings.
+              </p>
+
+              <!-- SIMPLE SHARE WITH FRIENDS -->
+              <p style="margin: 0 0 28px 0; font-size: 14px; color: #64748b; line-height: 1.6;">
+                Share with friends: <a href="https://www.unideals.in/" target="_blank" style="font-weight: 600; color: #3838EC; text-decoration: underline;">unideals.in</a> &nbsp;&middot;&nbsp; <a href="https://api.whatsapp.com/send?text=Hey!%20Join%20me%20on%20Unideals%20Early%20Access%20for%20our%20campus:%20https://www.unideals.in/" target="_blank" style="font-weight: 600; color: #3838EC; text-decoration: underline;">Share</a>
               </p>
 
               <!-- MINIMALIST SOCIAL ICONS ROW (Clean SVGs/PNGs, no tacky pills or emojis) -->
