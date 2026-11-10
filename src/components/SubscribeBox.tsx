@@ -158,6 +158,26 @@ export default function SubscribeBox({ isDark }: { isDark: boolean }) {
             height: 36px !important;
           }
         }
+
+        /* Seamless browser autofill fix (prevents Chrome from adding harsh background boxes) */
+        .unideals-sub-input:-webkit-autofill,
+        .unideals-sub-input:-webkit-autofill:hover,
+        .unideals-sub-input:-webkit-autofill:focus,
+        .unideals-sub-input:-webkit-autofill:active {
+          -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
+          -webkit-text-fill-color: #10072B !important;
+          caret-color: #10072B !important;
+          transition: background-color 5000s ease-in-out 0s;
+        }
+        .unideals-sub-input.is-dark:-webkit-autofill,
+        .unideals-sub-input.is-dark:-webkit-autofill:hover,
+        .unideals-sub-input.is-dark:-webkit-autofill:focus,
+        .unideals-sub-input.is-dark:-webkit-autofill:active {
+          -webkit-box-shadow: 0 0 0 1000px #141416 inset !important;
+          -webkit-text-fill-color: #ffffff !important;
+          caret-color: #ffffff !important;
+          transition: background-color 5000s ease-in-out 0s;
+        }
       `}</style>
 
       {/* Pill Container (Transitions internally between input and sleek confirmation) */}
@@ -365,7 +385,7 @@ export default function SubscribeBox({ isDark }: { isDark: boolean }) {
                 }}
                 placeholder="Enter your student email..."
                 required
-                className="unideals-sub-input"
+                className={`unideals-sub-input ${isDark ? "is-dark" : ""}`}
                 style={{
                   flex: 1,
                   border: "none",
@@ -441,7 +461,7 @@ export default function SubscribeBox({ isDark }: { isDark: boolean }) {
           letterSpacing: "-0.01em",
         }}
       >
-        Join 1,200+ students from your campus · No spam ever
+        Join students from your campus · No spam ever
       </p>
 
       {/* Social Link Icons in Marketing Page UI (Middle Bottom) */}
