@@ -173,20 +173,20 @@ function CountdownUnit({
         justifyContent: "center",
         borderRadius: "20px",
         background: isDark
-          ? "rgba(255, 255, 255, 0.04)"
+          ? "rgba(255, 255, 255, 0.035)"
           : "linear-gradient(180deg, #ffffff 0%, #fafafc 100%)",
         border: isDark
-          ? "1px solid rgba(255, 255, 255, 0.1)"
+          ? "1px solid rgba(255, 255, 255, 0.08)"
           : "1px solid rgba(16, 7, 43, 0.07)",
         boxShadow: isDark
-          ? "0 4px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15)"
+          ? "0 4px 18px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08)"
           : "0 4px 14px rgba(16, 7, 43, 0.04), inset 0 1px 0 #ffffff",
         overflow: "hidden",
         userSelect: "none",
         transition: "all 0.25s ease",
       }}
     >
-      {/* Top subtle highlight specular line (exactly as in image) */}
+      {/* Top subtle highlight specular line (brand blue accent) */}
       <span
         style={{
           pointerEvents: "none",
@@ -196,8 +196,8 @@ function CountdownUnit({
           right: "14%",
           height: "2px",
           background: isDark
-            ? "linear-gradient(90deg, transparent, rgba(110, 110, 244, 0.85), transparent)"
-            : "linear-gradient(90deg, transparent, rgba(110, 110, 244, 0.45), transparent)",
+            ? "linear-gradient(90deg, transparent, rgba(56, 56, 236, 0.6), transparent)"
+            : "linear-gradient(90deg, transparent, rgba(56, 56, 236, 0.4), transparent)",
           borderRadius: "9999px",
         }}
       />
@@ -305,16 +305,16 @@ export function AnimatedCountdown({
         alignItems: "center",
         borderRadius: "28px",
         background: isDark
-          ? "rgba(18, 14, 38, 0.65)"
+          ? "rgba(24, 24, 27, 0.72)"
           : "rgba(255, 255, 255, 0.8)",
         border: isDark
-          ? "1px solid rgba(255, 255, 255, 0.12)"
+          ? "1px solid rgba(255, 255, 255, 0.08)"
           : "1px solid rgba(16, 7, 43, 0.08)",
         backdropFilter: "blur(20px)",
         WebkitBackdropFilter: "blur(20px)",
         boxShadow: isDark
-          ? "0 20px 48px -12px rgba(0, 0, 0, 0.6), 0 0 24px rgba(110, 110, 244, 0.18)"
-          : "0 24px 48px -16px rgba(16, 7, 43, 0.09), 0 4px 12px rgba(110, 110, 244, 0.08)",
+          ? "0 20px 48px -12px rgba(0, 0, 0, 0.7), 0 1px 0 rgba(255, 255, 255, 0.06)"
+          : "0 24px 48px -16px rgba(16, 7, 43, 0.09), 0 4px 12px rgba(56, 56, 236, 0.08)",
         transition: "all 0.3s ease",
       }}
     >
@@ -414,7 +414,7 @@ export function AnimatedCountdown({
               marginTop: "12px",
               fontSize: "0.88rem",
               fontWeight: 700,
-              color: "#6E6EF4",
+              color: "#3838EC",
             }}
           >
             {completionMessage}

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef, useState, useEffect, useCallback, useSyncExternalStore } from "react";
+import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   UserRoundIcon,
@@ -13,12 +14,12 @@ import {
   WatchIcon,
 } from "@animateicons/react/lucide";
 import type { IconHandle } from "@animateicons/react";
-import { InteractiveDotPattern } from "./DotPattern";
+import GlossyBrandBackground from "./GlossyBrandBackground";
 import AnimatedCountdown from "./AnimatedCountdown";
 import SubscribeBox from "./SubscribeBox";
 
 // ── Design Tokens ─────────────────────────────────────────────────────────────
-const ICON_COLOR = "#6E6EF4";
+const ICON_COLOR = "#3838EC";
 const TEXT_COLOR = "#10072B";
 
 // ── Timing Configuration ──────────────────────────────────────────────────────
@@ -346,8 +347,8 @@ export default function UnidealsHero() {
         transition: "background 0.4s ease",
       }}
     >
-      {/* Interactive Well-Spaced Dot Pattern with Mouse Cursor Interaction */}
-      <InteractiveDotPattern isDark={isDark} dotSpacing={32} dotRadius={1.2} />
+      {/* Modern Glossy Brand Background with 3D Tag Corners & Mouse Spotlight */}
+      <GlossyBrandBackground isDark={isDark} />
 
       {/* TOP NAVIGATION: Transparent Header, Logo (Left), and Theme Switch (Right) */}
       <header
@@ -366,40 +367,34 @@ export default function UnidealsHero() {
       >
         {/* Unideals Logo (Top Left) */}
         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <div
+          {/* Deep Blue U-Tag Leaf Logo */}
+          <Image
+            src="/logo-u-blue.png"
+            alt="Unideals Logo"
+            width={28}
+            height={41}
+            priority
             style={{
-              width: "36px",
               height: "36px",
-              borderRadius: "10px",
-              background: "#6E6EF4",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              boxShadow: "0 0 16px rgba(110, 110, 244, 0.45)",
+              width: "auto",
+              display: "block",
+              objectFit: "contain",
+              filter: isDark
+                ? "drop-shadow(0 0 10px rgba(110, 110, 244, 0.75)) brightness(1.15)"
+                : "drop-shadow(0 2px 8px rgba(16, 7, 43, 0.12))",
+              transition: "filter 0.3s ease",
             }}
-          >
-            <span
-              style={{
-                color: "#ffffff",
-                fontWeight: 900,
-                fontSize: "1.2rem",
-                fontFamily: "'Figtree', sans-serif",
-                lineHeight: 1,
-              }}
-            >
-              U
-            </span>
-          </div>
+          />
           <span
             style={{
               fontFamily: "'Figtree', sans-serif",
-              fontWeight: 800,
-              fontSize: "1.25rem",
-              letterSpacing: "-0.03em",
+              fontWeight: 600, // Medium weight as requested
+              fontSize: "1.32rem",
+              letterSpacing: "-0.025em",
               color: textColor,
             }}
           >
-            unideals
+            Unideals
           </span>
         </div>
 
@@ -617,7 +612,7 @@ export default function UnidealsHero() {
             <WatchIcon
               size={15}
               duration={1}
-              color={isDark ? "#ffffff" : "#6E6EF4"}
+              color="#3838EC"
               isAnimated={true}
             />
             <span
